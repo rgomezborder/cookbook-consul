@@ -117,13 +117,6 @@ action :add do
         end
       end
 
-      service 'redborder-postgresql' do
-        service_name 'redborder-postgresql'
-        ignore_failure true
-        supports status: true, enable: true
-        action [:stop, :disable]
-      end
-
       if is_server
         execute 'Set consul ready' do
           command 'serf tags -set consul=ready'
